@@ -15,6 +15,7 @@
   "author": "zekais",
   "license": "ISC",
   "dependencies": {
+    "@lolikillers/aexm-api": "github:Aexm47/AEXM47",
     "axios": "^0.21.1",
     "brainly-scraper": "^1.0.3",
     "canvacord": "^5.2.3",
