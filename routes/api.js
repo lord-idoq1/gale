@@ -1018,6 +1018,153 @@ await fs.writeFileSync(__path +'/facepalm.jpeg', hamsil)
 res.sendFile(__path+'/facepalm.jpeg')
 });
 
+router.get('/captcha', async(req, res, next) => {
+img = req.query.img
+const apikey = req.query.apikey;
+          if (apikey === undefined) return res.status(404).send({
+              status: 404,
+              message: `Input Parameter apikey`
+          });
+          let limit = await isLimit(apikey);
+          if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+          const check = await cekKey(apikey);
+          if (!check) return res.status(403).send({
+            status: 403,
+            message: `apikey ${apikey} not found, please register first!`
+        });
+        limitAdd(apikey);
+if(!img) return res.json({creator: 'DappaUhuy', status: true, message: 'masukan parameter img'})
+const hamsil = await new make.Captcha().getImage(img)
+await fs.writeFileSync(__path +'/captcha.jpeg', hamsil)
+res.sendFile(__path+'/captcha.jpeg')
+});
+router.get('/bobross', async(req, res, next) => {
+img = req.query.img
+const apikey = req.query.apikey;
+          if (apikey === undefined) return res.status(404).send({
+              status: 404,
+              message: `Input Parameter apikey`
+          });
+          let limit = await isLimit(apikey);
+          if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+          const check = await cekKey(apikey);
+          if (!check) return res.status(403).send({
+            status: 403,
+            message: `apikey ${apikey} not found, please register first!`
+        });
+        limitAdd(apikey);
+if(!img) return res.json({creator: 'DappaUhuy', status: true, message: 'masukan parameter img'})
+
+const hamsil = await new make.Bobross().getImage(img)
+await fs.writeFileSync(__path +'/bobross.jpeg', hamsil)
+res.sendFile(__path+'/bobross.jpeg')
+});
+router.get('/confusedstonk', async(req, res, next) => {
+img = req.query.img
+const apikey = req.query.apikey;
+          if (apikey === undefined) return res.status(404).send({
+              status: 404,
+              message: `Input Parameter apikey`
+          });
+          let limit = await isLimit(apikey);
+          if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+          const check = await cekKey(apikey);
+          if (!check) return res.status(403).send({
+            status: 403,
+            message: `apikey ${apikey} not found, please register first!`
+        });
+        limitAdd(apikey);
+if(!img) return res.json({creator: 'DappaUhuy', status: true, message: 'masukan parameter img'})
+const hamsil = await new make.ConfusedStonk().getImage(img)
+await fs.writeFileSync(__path +'/confusedstonk.jpeg', hamsil)
+res.sendFile(__path+'/confusedstonk.jpeg')
+});
+router.get('/delete', async(req, res, next) => {
+img = req.query.img
+const apikey = req.query.apikey;
+          if (apikey === undefined) return res.status(404).send({
+              status: 404,
+              message: `Input Parameter apikey`
+          });
+          let limit = await isLimit(apikey);
+          if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+          const check = await cekKey(apikey);
+          if (!check) return res.status(403).send({
+            status: 403,
+            message: `apikey ${apikey} not found, please register first!`
+        });
+        limitAdd(apikey);
+if(!img) return res.json({creator: 'DappaUhuy', status: true, message: 'masukan parameter img'})
+const hamsil = await new make.Delete().getImage(img)
+await fs.writeFileSync(__path +'/delete.jpeg', hamsil)
+res.sendFile(__path+'/delete.jpeg')
+});
+router.get('/bed', async(req, res, next) => {
+img1 = req.query.img1,
+img2 = req.query.img2
+const apikey = req.query.apikey;
+          if (apikey === undefined) return res.status(404).send({
+              status: 404,
+              message: `Input Parameter apikey`
+          });
+          let limit = await isLimit(apikey);
+          if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+          const check = await cekKey(apikey);
+          if (!check) return res.status(403).send({
+            status: 403,
+            message: `apikey ${apikey} not found, please register first!`
+        });
+        limitAdd(apikey);
+if(!img1) return res.json({creator: 'DappaUhuy', status: true, message: 'masukan parameter img1'})
+if(!img2) return res.json({creator: 'DappaUhuy', status: true, message: 'masukan parameter img2'})
+
+const hamsil = await new make.Bed().getImage(img1, img2)
+await fs.writeFileSync(__path +'/bed.jpeg', hamsil)
+res.sendFile(__path+'/bed.jpeg')
+});
+router.get('/doublestonk', async(req, res, next) => {
+img1 = req.query.img1,
+img2 = req.query.img2
+const apikey = req.query.apikey;
+          if (apikey === undefined) return res.status(404).send({
+              status: 404,
+              message: `Input Parameter apikey`
+          });
+          let limit = await isLimit(apikey);
+          if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+          const check = await cekKey(apikey);
+          if (!check) return res.status(403).send({
+            status: 403,
+            message: `apikey ${apikey} not found, please register first!`
+        });
+        limitAdd(apikey);
+if(!img1) return res.json({creator: 'DappaUhuy', status: true, message: 'masukan parameter img1'})
+if(!img2) return res.json({creator: 'DappaUhuy', status: true, message: 'masukan parameter img2'})
+const hamsil = await new make.DoubleStonk().getImage(img1, img2)
+await fs.writeFileSync(__path +'/doublestonk.jpeg', hamsil)
+res.sendFile(__path+'/doublestonk.jpeg')
+});
+router.get('/ssweb', async (req, res, next) => {
+const url = req.query.url;
+   const apikey = req.query.apikey;
+        if (apikey === undefined) return res.status(404).send({
+            status: 404,
+            message: `Input Parameter apikey`
+        });
+        let limit = await isLimit(apikey);
+        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+        const check = await cekKey(apikey);
+        if (!check) return res.status(403).send({
+          status: 403,
+          message: `apikey ${apikey} not found, please register first!`
+      });
+      limitAdd(apikey);
+if (!url) return res.json(loghandler.invalidlink);
+afs = await fetch(`http://nurutomo.herokuapp.com/api/ssweb?url=${req.query.url}&delay=1000`)
+ssss = await afs.buffer()
+res.type('png')
+res.send(ssss)
+});
 
 router.get('/imgedit/circle', async(req, res, next) => {
   const url = req.query.url;
