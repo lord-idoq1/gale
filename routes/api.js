@@ -1160,10 +1160,14 @@ const url = req.query.url;
       });
       limitAdd(apikey);
 if (!url) return res.json(loghandler.invalidlink);
-afs = await fetch(`http://nurutomo.herokuapp.com/api/ssweb?url=${req.query.url}&delay=1000`)
-ssss = await afs.buffer()
-res.type('png')
-res.send(ssss)
+var hasil = await getBuffer(`http://nurutomo.herokuapp.com/api/ssweb?url=${url}`)
+       await fs.writeFileSync(__path + '/tmp/screenshot.png', hasil)
+
+         res.sendFile(__path + '/tmp/screenshot.png')
+} catch (e) {
+     console.log(e)
+	res.sendFile(error)
+   }
 });
 
 router.get('/imgedit/circle', async(req, res, next) => {
