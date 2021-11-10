@@ -16,6 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "@lolikillers/aexm-api": "github:Aexm47/AEXM47",
+    "knights-canvas": "github:hardiantojek93/knights-canvas",
+    "canvas-hikki": "github:hardianto-cpu/canvas-hikki",
     "axios": "^0.21.1",
     "brainly-scraper": "^1.0.3",
     "canvacord": "^5.2.3",
