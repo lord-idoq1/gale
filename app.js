@@ -148,6 +148,15 @@ app.get('/othermenu', isAuthenticated, async (req, res) => {
     layout: 'layouts/main'
   });
 });
+app.get('/sfwmenu', isAuthenticated, async (req, res) => { 
+  let { apikey, username, limit } = req.user
+  res.render('sfw', {
+    limit: limit,
+    username: username,
+    apikey: apikey,
+    layout: 'layouts/main'
+  });
+});
 app.get('/changelog', isAuthenticated, async (req, res) => { 
   let { apikey, username, limit } = req.user
   res.render('changelog', {
