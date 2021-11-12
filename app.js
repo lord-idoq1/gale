@@ -76,8 +76,8 @@ app.use(function(req, res, next) {
 
 app.get('/', (req, res) => {
   addVisitor()
-  res.render('home', {
-    layout: 'views/home'
+  res.render('main', {
+    layout: 'layouts/main'
   });
 });
 app.get('/price', (req, res) => {
