@@ -39,7 +39,7 @@
     "fs-extra": "^10.0.0",
     "google-it": "^1.6.2",
     "euphoriachan-api": "^0.0.1",
-    "twitter-scrape-account-stats": "^0.2.1"
+    "twitter-scrape-account-stats": "^0.2.1",
     "memorystore": "^1.6.6",
     "moment-timezone": "^0.5.33",
     "mongoose": "^5.13.5",
