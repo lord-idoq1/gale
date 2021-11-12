@@ -76,7 +76,7 @@ app.use(function(req, res, next) {
 
 app.get('/', (req, res) => {
   addVisitor()
-  res.render('main', {
+  res.render('index', {
     layout: 'layouts/main'
   });
 });
