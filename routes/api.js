@@ -294,6 +294,28 @@ router.get('/emoji', async(req, res, next) => {
   })
 })
 
+ router.get('/sideoppai', async(req, res, next) => {
+         const apikey = req.query.apikey;
+ if (apikey === undefined) return res.status(404).send({
+     status: 404,
+     message: `Input Parameter apikey`
+ });
+ limitAdd(apikey);
+ const check = await cekKey(apikey);
+ if (!check) return res.status(403).send({
+  status: 403,
+  message: `apikey ${apikey} not found, please register first!`
+});
+  let limit = await isLimit(apikey);
+  if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});                
+              {
+        let hasil = 'https://raw.githubusercontent.com/lord-idoq1/nime2x/main/hentai/sideoppai.json'
+        data = await fetch(hasil).then(v => v.buffer())
+        await fs.writeFileSync(__path +'/tmp/tahta.jpg', data)
+        res.sendFile(__path +'/tmp/tahta.jpg')
+        }
+      })
+
 router.get('/otakudesu', async(req, res, next) => {
   const apikey = req.query.apikey;
         if (apikey === undefined) return res.status(404).send({
