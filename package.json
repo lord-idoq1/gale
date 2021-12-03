@@ -19,7 +19,7 @@
     "knights-canvas": "github:hardiantojek93/knights-canvas",
     "canvas-hikki": "github:hardianto-cpu/canvas-hikki",
     "axios": "^0.21.1",
-    "brainly-scraper": "^1.0.3",
+    "brainly-scraper-ts": "^1.0.3",
     "canvacord": "^5.2.3",
     "canvas": "^2.8.0",
     "nana-api": "^1.1.4",
