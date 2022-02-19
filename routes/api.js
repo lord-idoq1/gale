@@ -10,7 +10,6 @@ const { cekKey, limitAdd, isLimit } = require('../database/db');
 const { youtubePlay, youtubeMp4, youtubeMp3 } = require('../controllers/yt');
 const { cakLontong, bijak, quotes, fakta, ptl, motivasi } = require('../controllers/randomtext');
 const { photoOxy } = require('./oxy');
-const { xnxxsearch } = require('../lib/xnxx');
 const { herolist, herodetail } = require('../lib/heroml');
 const  request  = require('request');
 const make = require('claire-cord');
@@ -530,34 +529,6 @@ const apikey = req.query.apikey;
     
     
     palingmurah_(query)
-        .then((result) => {
-            res.json(result);
-        })
-        .catch((error) => {
-            res.json(error);
-        });
-      
-});
-
-router.get("/search/xnxx", async(req, res, next) => {
-    const query = req.query.query;
-const apikey = req.query.apikey;
-        if (apikey === undefined) return res.status(404).send({
-            status: 404,
-            message: `Input Parameter apikey`
-        });
-        let limit = await isLimit(apikey);
-        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
-        const check = await cekKey(apikey);
-        if (!check) return res.status(403).send({
-          status: 403,
-          message: `apikey ${apikey} not found, please register first!`
-      });
-      limitAdd(apikey);        
-    if(!query) return res.json(loghandler.notquery)
-    
-    
-    xnxxsearch(query)
         .then((result) => {
             res.json(result);
         })
