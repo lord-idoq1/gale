@@ -18,6 +18,7 @@ var creatorList = ['Aria Putra Pratama'];
 var fetch = require('node-fetch');
 var fs = require('fs');
 var maker = require('mumaker');
+var xfarr = require('xfarr-api')
  var creator = creatorList[Math.floor(Math.random() * creatorList.length)];
  var download = function(uri, filename, callback){
   request.head(uri, function(err, res, body){
@@ -391,6 +392,31 @@ router.get('/ig/story', async(req, res, next) => {
   res.send('error')
   })
 })
+router.get('/anime/search', async(req, res, next) => {
+        const query = req.query.query
+        const apikey = req.query.apikey;
+        if (apikey === undefined) return res.status(404).send({
+            status: 404,
+            message: `Input Parameter apikey`
+        });
+        let limit = await isLimit(apikey);
+        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+        const check = await cekKey(apikey);
+        if (!check) return res.status(403).send({
+          status: 403,
+          message: `apikey ${apikey} not found, please register first!`
+      });
+      limitAdd(apikey);
+        if(!query) return res.json(loghandler.noquery)
+        xfarr.anime(query)
+            
+ .then(data =>{ res.send(data)})
+  .catch(err=>{
+  console.log(err)
+  res.send('error')
+  })
+})
+
 router.get('/npm/stalk', async(req, res, next) => {
         const user = req.query.user
         const apikey = req.query.apikey;
