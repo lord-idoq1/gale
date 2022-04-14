@@ -3,6 +3,7 @@ const router = express.Router();
 const axios = require('axios')
 var { fetchJson } = require('../lib/fetcher.js')
 const path = require('path');
+const { twitterStalk, instagramStalk, tiktokStalk, npmStalk, githubStalk, tgstat } = require('../lib/function');
 const { readFileTxt, readFileJson } = require('../lib/function');
 const { ytMp4, ytMp3, ytPlay } = require('../lib/youtube');
 const { savetik } = require('../lib/savetik');
@@ -384,6 +385,55 @@ router.get('/ig/story', async(req, res, next) => {
   res.send('error')
   })
 })
+router.get('/npm/stalk', async(req, res, next) => {
+        const username = req.query.username
+        const apikey = req.query.apikey;
+        if (apikey === undefined) return res.status(404).send({
+            status: 404,
+            message: `Input Parameter apikey`
+        });
+        let limit = await isLimit(apikey);
+        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+        const check = await cekKey(apikey);
+        if (!check) return res.status(403).send({
+          status: 403,
+          message: `apikey ${apikey} not found, please register first!`
+      });
+      limitAdd(apikey);
+        if(!username) return res.json(loghandler.nousername)
+        npmStalk(username)
+            
+ .then(data =>{ res.send(data)})
+  .catch(err=>{
+  console.log(err)
+  res.send('error')
+  })
+})
+router.get('/twitter/stalk', async(req, res, next) => {
+        const username = req.query.username
+        const apikey = req.query.apikey;
+        if (apikey === undefined) return res.status(404).send({
+            status: 404,
+            message: `Input Parameter apikey`
+        });
+        let limit = await isLimit(apikey);
+        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+        const check = await cekKey(apikey);
+        if (!check) return res.status(403).send({
+          status: 403,
+          message: `apikey ${apikey} not found, please register first!`
+      });
+      limitAdd(apikey);
+        if(!username) return res.json(loghandler.nousername)
+        twitterStalk(username)
+            
+ .then(data =>{ res.send(data)})
+  .catch(err=>{
+  console.log(err)
+  res.send('error')
+  })
+})
+
 router.get('/tebakgambar', async(req, res, next) => {
   const apikey = req.query.apikey;
         if (apikey === undefined) return res.status(404).send({
