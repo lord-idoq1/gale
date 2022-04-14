@@ -39,6 +39,7 @@
     "fs-extra": "^10.0.0",
     "nekobocc": "^1.1.0",
     "mumaker": "^1.0.0",
+    "got": "^11.8.3",
     "google-it": "^1.6.2",
     "euphoriachan-api": "^0.0.1",
     "fbdl-core": "^1.0.2",
