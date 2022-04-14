@@ -302,13 +302,13 @@ router.get('/ig/download', async(req, res, next) => {
       limitAdd(apikey);
         if(!url) return res.json(loghandler.invalidlink)
         maker.instagram(url)
-            .then((data) => {
-                res.send(data);
-            })
-            .catch((err) => {
-                res.send(err);
-            });
-
+            
+ .then(data =>{ res.send(data)})
+  .catch(err=>{
+  console.log(err)
+  res.send('error')
+  })
+})
 router.get('/tebakgambar', async(req, res, next) => {
   const apikey = req.query.apikey;
         if (apikey === undefined) return res.status(404).send({
