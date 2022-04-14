@@ -3,7 +3,6 @@ const router = express.Router();
 const axios = require('axios')
 var { fetchJson } = require('../lib/fetcher.js')
 const path = require('path');
-const maker = require('mumaker');
 const { readFileTxt, readFileJson } = require('../lib/function');
 const { ytMp4, ytMp3, ytPlay } = require('../lib/youtube');
 const { cekKey, limitAdd, isLimit } = require('../database/db');
@@ -15,6 +14,7 @@ var zrapi = require("zrapi");
 var creatorList = ['Aria Putra Pratama'];
 var fetch = require('node-fetch');
 var fs = require('fs');
+var maker = require('mumaker');
  var creator = creatorList[Math.floor(Math.random() * creatorList.length)];
  var download = function(uri, filename, callback){
   request.head(uri, function(err, res, body){
