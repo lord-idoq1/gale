@@ -325,7 +325,7 @@ router.get('/ig/story', async(req, res, next) => {
       });
       limitAdd(apikey);
         if(!username) return res.json(loghandler.nousername)
-        maker.instagram(username)
+        maker.igstory(username)
             
  .then(data =>{ res.send(data)})
   .catch(err=>{
