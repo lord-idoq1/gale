@@ -107,6 +107,12 @@ loghandler = {
     code: 406,
     message: 'masukan parameter username'
 },
+noquery: {
+    status: false,
+    creator: `${creator}`,
+    code: 406,
+    message: 'masukan parameter query'
+},
 nouser: {
     status: false,
     creator: `${creator}`,
