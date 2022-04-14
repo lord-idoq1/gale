@@ -106,6 +106,12 @@ loghandler = {
     code: 406,
     message: 'masukan parameter username'
 },
+nouser: {
+    status: false,
+    creator: `${creator}`,
+    code: 406,
+    message: 'masukan parameter user'
+},
   notype: {
     status: false,
     creator: `${creator}`,
@@ -386,7 +392,7 @@ router.get('/ig/story', async(req, res, next) => {
   })
 })
 router.get('/npm/stalk', async(req, res, next) => {
-        const username = req.query.username
+        const user = req.query.user
         const apikey = req.query.apikey;
         if (apikey === undefined) return res.status(404).send({
             status: 404,
@@ -400,8 +406,8 @@ router.get('/npm/stalk', async(req, res, next) => {
           message: `apikey ${apikey} not found, please register first!`
       });
       limitAdd(apikey);
-        if(!username) return res.json(loghandler.nousername)
-        npmStalk(username)
+        if(!user) return res.json(loghandler.nouser)
+        npmStalk(user)
             
  .then(data =>{ res.send(data)})
   .catch(err=>{
@@ -410,7 +416,7 @@ router.get('/npm/stalk', async(req, res, next) => {
   })
 })
 router.get('/twitter/stalk', async(req, res, next) => {
-        const username = req.query.username
+        const user = req.query.user
         const apikey = req.query.apikey;
         if (apikey === undefined) return res.status(404).send({
             status: 404,
@@ -424,8 +430,8 @@ router.get('/twitter/stalk', async(req, res, next) => {
           message: `apikey ${apikey} not found, please register first!`
       });
       limitAdd(apikey);
-        if(!username) return res.json(loghandler.nousername)
-        twitterStalk(username)
+        if(!user) return res.json(loghandler.nouser)
+        twitterStalk(user)
             
  .then(data =>{ res.send(data)})
   .catch(err=>{
