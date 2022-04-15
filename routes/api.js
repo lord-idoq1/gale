@@ -21,6 +21,7 @@ var fs = require('fs');
 var maker = require('mumaker');
 var ch = require('canvas-hikki');
 var xfarr = require('xfarr-api')
+const make = require('claire-cord');
  var creator = creatorList[Math.floor(Math.random() * creatorList.length)];
  var download = function(uri, filename, callback){
   request.head(uri, function(err, res, body){
