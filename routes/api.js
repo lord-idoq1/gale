@@ -460,6 +460,420 @@ if (!url) return res.json(loghandler.invalidlink);
          await fs.writeFileSync(__path +'/tmp/tod.png', data)
         res.sendFile(__path+'/tmp/tod.png')
 });
+router.get('/welcome3', async (req, res, next) => {
+ const apikey = req.query.apikey;
+        if (apikey === undefined) return res.status(404).send({
+            status: 404,
+            message: `Input Parameter apikey`
+        });
+        let limit = await isLimit(apikey);
+        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+        const check = await cekKey(apikey);
+        if (!check) return res.status(403).send({
+          status: 403,
+          message: `apikey ${apikey} not found, please register first!`
+      });
+      limitAdd(apikey);
+if (!req.query.name) return res.json({ status: 404, error: 'masukkan param name'})
+if (!req.query.msg) return res.json({ status: 404, error: 'masukkan param msg'})
+if (!req.query.mem) return res.json({ status: 404, error: 'masukkan param mem'})
+if (!req.query.picurl) return res.json({ status: 404, error: 'masukkan param picurl'})
+if (!req.query.bgurl) return res.json({ status: 404, error: 'masukkan param bgurl'})
+var canvas = require('discanvas')
+const welcomer = await new canvas.Welcome()
+    .setAvatar(req.query.picurl)
+    .setUsername(`${req.query.name}#${req.query.mem}`)
+    .setBackground("BACKGROUND", req.query.bgurl)
+    //or : .setBackground("COLOR", "#ff5555")
+    .setMainText("Welcome")
+    .setSecondText(req.query.msg)
+    /*
+    .setCircleColor("#ff5555")
+    .setMainTextColor("#ff5555")
+    .setSecondTextColor("#ff5555")
+    .setPseudoColor("#ff5555")
+    */
+    .toWelcome() 
+                const base64 = `${welcomer.toBuffer().toString('base64')}`
+                buffer = Buffer.from(base64, 'base64')
+               res.type('png');
+               res.send(buffer)
+        
+})
+router.get('/goodbye3', async (req, res, next) => {
+ const apikey = req.query.apikey;
+        if (apikey === undefined) return res.status(404).send({
+            status: 404,
+            message: `Input Parameter apikey`
+        });
+        let limit = await isLimit(apikey);
+        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+        const check = await cekKey(apikey);
+        if (!check) return res.status(403).send({
+          status: 403,
+          message: `apikey ${apikey} not found, please register first!`
+      });
+      limitAdd(apikey);
+if (!req.query.name) return res.json({ status: 404, error: 'masukkan param name'})
+if (!req.query.msg) return res.json({ status: 404, error: 'masukkan param msg'})
+if (!req.query.mem) return res.json({ status: 404, error: 'masukkan param mem'})
+if (!req.query.picurl) return res.json({ status: 404, error: 'masukkan param picurl'})
+if (!req.query.bgurl) return res.json({ status: 404, error: 'masukkan param bgurl'})
+var canvas = require('discanvas')
+const welcomer = await new canvas.Welcome()
+    .setAvatar(req.query.picurl)
+    .setUsername(`${req.query.name}#${req.query.mem}`)
+    .setBackground("BACKGROUND", req.query.bgurl)
+    //or : .setBackground("COLOR", "#ff5555")
+    .setMainText("Goodbye")
+    .setSecondText(req.query.msg)
+    /*
+    .setCircleColor("#ff5555")
+    .setMainTextColor("#ff5555")
+    .setSecondTextColor("#ff5555")
+    .setPseudoColor("#ff5555")
+    */
+    .toWelcome() 
+                const base64 = `${welcomer.toBuffer().toString('base64')}`
+                buffer = Buffer.from(base64, 'base64')
+               res.type('png');
+               res.send(buffer)
+        
+})
+
+router.get('/promote', async (req, res, next) => {
+ const apikey = req.query.apikey;
+        if (apikey === undefined) return res.status(404).send({
+            status: 404,
+            message: `Input Parameter apikey`
+        });
+        let limit = await isLimit(apikey);
+        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+        const check = await cekKey(apikey);
+        if (!check) return res.status(403).send({
+          status: 403,
+          message: `apikey ${apikey} not found, please register first!`
+      });
+      limitAdd(apikey);
+if (!req.query.name) return res.json({ status: 404, error: 'masukkan param name'})
+if (!req.query.msg) return res.json({ status: 404, error: 'masukkan param msg'})
+if (!req.query.mem) return res.json({ status: 404, error: 'masukkan param mem'})
+if (!req.query.picurl) return res.json({ status: 404, error: 'masukkan param picurl'})
+if (!req.query.bgurl) return res.json({ status: 404, error: 'masukkan param bgurl'})
+var canvas = require('discanvas')
+const welcomer = await new canvas.Welcome()
+    .setAvatar(req.query.picurl)
+    .setUsername(`${req.query.name}#${req.query.mem}`)
+    .setBackground("BACKGROUND", req.query.bgurl)
+    //or : .setBackground("COLOR", "#ff5555")
+    .setMainText("Promote")
+    .setSecondText(req.query.msg)
+    /*
+    .setCircleColor("#ff5555")
+    .setMainTextColor("#ff5555")
+    .setSecondTextColor("#ff5555")
+    .setPseudoColor("#ff5555")
+    */
+    .toWelcome() 
+                const base64 = `${welcomer.toBuffer().toString('base64')}`
+                buffer = Buffer.from(base64, 'base64')
+               res.type('png');
+               res.send(buffer)
+        
+})
+router.get('/demote', async (req, res, next) => {
+ const apikey = req.query.apikey;
+        if (apikey === undefined) return res.status(404).send({
+            status: 404,
+            message: `Input Parameter apikey`
+        });
+        let limit = await isLimit(apikey);
+        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+        const check = await cekKey(apikey);
+        if (!check) return res.status(403).send({
+          status: 403,
+          message: `apikey ${apikey} not found, please register first!`
+      });
+      limitAdd(apikey);
+if (!req.query.name) return res.json({ status: 404, error: 'masukkan param name'})
+if (!req.query.msg) return res.json({ status: 404, error: 'masukkan param msg'})
+if (!req.query.mem) return res.json({ status: 404, error: 'masukkan param mem'})
+if (!req.query.picurl) return res.json({ status: 404, error: 'masukkan param picurl'})
+if (!req.query.bgurl) return res.json({ status: 404, error: 'masukkan param bgurl'})
+var canvas = require('discanvas')
+const welcomer = await new canvas.Welcome()
+    .setAvatar(req.query.picurl)
+    .setUsername(`${req.query.name}#${req.query.mem}`)
+    .setBackground("BACKGROUND", req.query.bgurl)
+    //or : .setBackground("COLOR", "#ff5555")
+    .setMainText("Demote")
+    .setSecondText(req.query.msg)
+    /*
+    .setCircleColor("#ff5555")
+    .setMainTextColor("#ff5555")
+    .setSecondTextColor("#ff5555")
+    .setPseudoColor("#ff5555")
+    */
+    .toWelcome() 
+                const base64 = `${welcomer.toBuffer().toString('base64')}`
+                buffer = Buffer.from(base64, 'base64')
+               res.type('png');
+               res.send(buffer)
+        
+})
+
+router.get('/welcome', async (req, res, next) => {
+ const apikey = req.query.apikey;
+        if (apikey === undefined) return res.status(404).send({
+            status: 404,
+            message: `Input Parameter apikey`
+        });
+        let limit = await isLimit(apikey);
+        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+        const check = await cekKey(apikey);
+        if (!check) return res.status(403).send({
+          status: 403,
+          message: `apikey ${apikey} not found, please register first!`
+      });
+      limitAdd(apikey);
+if (!req.query.name) return res.json({ status: 404, error: 'masukkan param name'})
+if (!req.query.mem) return res.json({ status: 404, error: 'masukkan param mem'})
+if (!req.query.gcname) return res.json({ status: 404, error: 'masukkan param gcname'})
+if (!req.query.picurl) return res.json({ status: 404, error: 'masukkan param picurl'})
+if (!req.query.bgurl) return res.json({ status: 404, error: 'masukkan param bgurl'})
+let hasil = `https://gatauajg.yogipw.repl.co/api/welcome?name=${req.query.name}&mem=${req.query.mem}&gcname=${req.query.gcname}&picurl=${req.query.picurl}&bgurl=${req.query.bgurl}`
+  data = await fetch(hasil).then(v => v.buffer())
+  await fs.writeFileSync(__path +'/tmp/tod.png', data)
+  res.sendFile(__path+'/tmp/tod.png')
+  
+});
+router.get('/goodbye', async (req, res, next) => {
+ const apikey = req.query.apikey;
+        if (apikey === undefined) return res.status(404).send({
+            status: 404,
+            message: `Input Parameter apikey`
+        });
+        let limit = await isLimit(apikey);
+        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+        const check = await cekKey(apikey);
+        if (!check) return res.status(403).send({
+          status: 403,
+          message: `apikey ${apikey} not found, please register first!`
+      });
+      limitAdd(apikey);
+if (!req.query.name) return res.json({ status: 404, error: 'masukkan param name'})
+if (!req.query.mem) return res.json({ status: 404, error: 'masukkan param mem'})
+if (!req.query.gcname) return res.json({ status: 404, error: 'masukkan param gcname'})
+if (!req.query.picurl) return res.json({ status: 404, error: 'masukkan param picurl'})
+if (!req.query.bgurl) return res.json({ status: 404, error: 'masukkan param bgurl'})
+let hasil = `https://gatauajg.yogipw.repl.co/api/goodbye?name=${req.query.name}&mem=${req.query.mem}&gcname=${req.query.gcname}&picurl=${req.query.picurl}&bgurl=${req.query.bgurl}`
+  data = await fetch(hasil).then(v => v.buffer())
+  await fs.writeFileSync(__path +'/tmp/tod.png', data)
+  res.sendFile(__path+'/tmp/tod.png')
+  
+});
+router.get('/welcome2', async (req, res, next) => {
+ const apikey = req.query.apikey;
+        if (apikey === undefined) return res.status(404).send({
+            status: 404,
+            message: `Input Parameter apikey`
+        });
+        let limit = await isLimit(apikey);
+        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+        const check = await cekKey(apikey);
+        if (!check) return res.status(403).send({
+          status: 403,
+          message: `apikey ${apikey} not found, please register first!`
+      });
+      limitAdd(apikey);
+if (!req.query.name) return res.json({ status: 404, error: 'masukkan param name'})
+if (!req.query.mem) return res.json({ status: 404, error: 'masukkan param mem'})
+if (!req.query.gcname) return res.json({ status: 404, error: 'masukkan param gcname'})
+if (!req.query.picurl) return res.json({ status: 404, error: 'masukkan param picurl'})
+if (!req.query.bgurl) return res.json({ status: 404, error: 'masukkan param bgurl'})
+if (!req.query.gcicon) return res.json({ status: 404, error: 'masukkan param gcicon'})
+let hasil = `https://gatauajg.yogipw.repl.co/api/welcome2?name=${encodeURIComponent(req.query.name.toUpperCase())}&mem=${encodeURIComponent(req.query.mem.toUpperCase())}&gcname=${encodeURIComponent(req.query.gcname.toUpperCase())}&picurl=${req.query.picurl}&bgurl=${req.query.bgurl}&gcicon=${req.query.gcicon}`
+  data = await fetch(hasil).then(v => v.buffer())
+  await fs.writeFileSync(__path +'/tmp/tod.png', data)
+  res.sendFile(__path+'/tmp/tod.png')
+  
+});
+router.get('/goodbye2', async (req, res, next) => {
+ const apikey = req.query.apikey;
+        if (apikey === undefined) return res.status(404).send({
+            status: 404,
+            message: `Input Parameter apikey`
+        });
+        let limit = await isLimit(apikey);
+        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+        const check = await cekKey(apikey);
+        if (!check) return res.status(403).send({
+          status: 403,
+          message: `apikey ${apikey} not found, please register first!`
+      });
+      limitAdd(apikey);
+if (!req.query.name) return res.json({ status: 404, error: 'masukkan param name'})
+if (!req.query.mem) return res.json({ status: 404, error: 'masukkan param mem'})
+if (!req.query.gcname) return res.json({ status: 404, error: 'masukkan param gcname'})
+if (!req.query.picurl) return res.json({ status: 404, error: 'masukkan param picurl'})
+if (!req.query.bgurl) return res.json({ status: 404, error: 'masukkan param bgurl'})
+if (!req.query.gcicon) return res.json({ status: 404, error: 'masukkan param gcicon'})
+let hasil = `https://gatauajg.yogipw.repl.co/api/goodbye2?name=${encodeURIComponent(req.query.name.toUpperCase())}&mem=${encodeURIComponent(req.query.mem.toUpperCase())}&gcname=${encodeURIComponent(req.query.gcname.toUpperCase())}&picurl=${req.query.picurl}&bgurl=${req.query.bgurl}&gcicon=${req.query.gcicon}`
+  data = await fetch(hasil).then(v => v.buffer())
+  & fs.writeFileSync(__path +'/tmp/tod.png', data)
+  res.sendFile(__path+'/tmp/tod.png')
+  
+});
+router.get('/canvas/welcome', async (req, res) => {
+            pp = req.query.pp,
+            nama = req.query.nama,
+            bg = req.query.bg,    
+	    namagc = req.query.namagc,
+            member = req.query.member
+             const apikey = req.query.apikey;
+        if (apikey === undefined) return res.status(404).send({
+            status: 404,
+            message: `Input Parameter apikey`
+        });
+        let limit = await isLimit(apikey);
+        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+        const check = await cekKey(apikey);
+        if (!check) return res.status(403).send({
+          status: 403,
+          message: `apikey ${apikey} not found, please register first!`
+      });
+      limitAdd(apikey);
+    if (!pp) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter pp"})
+    if (!nama) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter nama"})
+    if (!bg) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter bg"})
+    if (!namagc) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter namagc"})
+    if (!member) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter member"})
+    
+    
+let Welcome = await new ch.Welcome2()
+.setAvatar(pp)
+.setUsername(nama)
+.setBg(bg)
+.setGroupname(namagc)
+.setMember(member)
+.toAttachment()
+    
+ data = Welcome.toBuffer();
+  await fs.writeFileSync(__path +'/database/welcome.png', data)
+  res.sendFile(__path+'/database/welcome.png')
+  .catch(e => {
+         	res.json(loghandler.error)
+});
+});
+router.get('/canvas/goodbye', async (req, res) => {
+            pp = req.query.pp,
+            nama = req.query.nama,
+            bg = req.query.bg,    
+            member = req.query.member
+             const apikey = req.query.apikey;
+        if (apikey === undefined) return res.status(404).send({
+            status: 404,
+            message: `Input Parameter apikey`
+        });
+        let limit = await isLimit(apikey);
+        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+        const check = await cekKey(apikey);
+        if (!check) return res.status(403).send({
+          status: 403,
+          message: `apikey ${apikey} not found, please register first!`
+      });
+      limitAdd(apikey);
+    if (!pp) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter pp"})
+    if (!nama) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter nama"})
+    if (!bg) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter bg"})
+    if (!member) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter member"})
+    
+let Goodbye = await new ch.Goodbye2()
+.setAvatar(pp)
+.setUsername(nama)
+.setBg(bg)
+.setMember(member)
+.toAttachment()
+    
+ data = Goodbye.toBuffer();
+  await fs.writeFileSync(__path +'/database/goodbye.png', data)
+  res.sendFile(__path+'/database/goodbye.png')
+  .catch(e => {
+         	res.json(loghandler.error)
+});
+});
+router.get('/canvas/promote', async (req, res) => {
+            pp = req.query.pp,
+            nama = req.query.nama,
+	    namagc = req.query.namagc,
+	    ppgc = req.query.ppgc,
+            bg = req.query.bg,
+            member = req.query.member
+    if (!pp) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter pp"})
+    if (!nama) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter nama"})
+    if (!namagc) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter namagc"})
+    if (!ppgc) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter ppgc"})
+    if (!bg) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter bg"})
+    if (!member) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter member"})
+const Promote = await new kc.Promote()
+    .setAvatar(pp)
+    .setUsername(nama)
+    .setGuildName(namagc)
+    .setGuildIcon(ppgc)
+    .setBackground(bg)
+    .setMemberCount(member)
+    .toAttachment();
+    
+ data = Promote.toBuffer();
+  await fs.writeFileSync(__path +'/database/promote.png', data)
+  res.sendFile(__path+'/database/promote.png')
+  .catch(e => {
+         	res.json(loghandler.error)
+});
+});
+router.get('/canvas/demote', async (req, res) => {
+            pp = req.query.pp,
+            nama = req.query.nama,
+	    namagc = req.query.namagc,
+	    ppgc = req.query.ppgc,
+            bg = req.query.bg,
+            member = req.query.member
+             const apikey = req.query.apikey;
+        if (apikey === undefined) return res.status(404).send({
+            status: 404,
+            message: `Input Parameter apikey`
+        });
+        let limit = await isLimit(apikey);
+        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+        const check = await cekKey(apikey);
+        if (!check) return res.status(403).send({
+          status: 403,
+          message: `apikey ${apikey} not found, please register first!`
+      });
+      limitAdd(apikey);
+    if (!pp) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter pp"})
+    if (!nama) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter nama"})
+    if (!namagc) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter namagc"})
+    if (!ppgc) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter ppgc"})
+    if (!bg) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter bg"})
+    if (!member) return res.json({ status : false, creator : `${creator}`, message : "masukan parameter member"})
+const Demote = await new kc.Demote()
+    .setAvatar(pp)
+    .setUsername(nama)
+    .setGuildName(namagc)
+    .setGuildIcon(ppgc)
+    .setBackground(bg)
+    .setMemberCount(member)
+    .toAttachment();
+    
+ data = Demote.toBuffer();
+  await fs.writeFileSync(__path +'/database/demote.png', data)
+  res.sendFile(__path+'/database/demote.png')
+  .catch(e => {
+         	res.json(loghandler.error)
+});
+});
+
 router.get('/imgedit/discordblack', async(req, res, next) => {
   const url = req.query.url;
    const apikey = req.query.apikey;
