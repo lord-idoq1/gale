@@ -8,6 +8,7 @@ const { readFileTxt, readFileJson } = require('../lib/function');
 const { ytMp4, ytMp3, ytPlay } = require('../lib/youtube');
 const { savetik } = require('../lib/savetik');
 const { fb } = require('../lib/fbdl');
+const { pinterest, wallpaper, wikimedia, hentaiImage, quotesAnime, hentai, gore, porno, styletext, emojipedia, iplookup, ipweather, zerochan, konachan, braines, brainesUser, brainesVideo, ptl, ssweb, katabijak, peribahasa, cerpen } = require('../lib/scraper'); 
 const { xnxxsearch, xnxxdl } = require('../lib/bokep');
 const { cekKey, limitAdd, isLimit } = require('../database/db');
 const { youtubePlay, youtubeMp4, youtubeMp3 } = require('../controllers/yt');
@@ -374,6 +375,29 @@ router.get('/tiktok/download', async(req, res, next) => {
   res.send('error')
   })
 })
+router.get('/bokep/download', async(req, res, next) => {        
+        const apikey = req.query.apikey;
+        if (apikey === undefined) return res.status(404).send({
+            status: 404,
+            message: `Input Parameter apikey`
+        });
+        let limit = await isLimit(apikey);
+        if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
+        const check = await cekKey(apikey);
+        if (!check) return res.status(403).send({
+          status: 403,
+          message: `apikey ${apikey} not found, please register first!`
+      });
+      limitAdd(apikey);       
+        porno()
+            
+ .then(data =>{ res.send(data)})
+  .catch(err=>{
+  console.log(err)
+  res.send('error')
+  })
+})
+
 router.get('/xnxx/download', async(req, res, next) => {
         const url = req.query.url
         const apikey = req.query.apikey;
