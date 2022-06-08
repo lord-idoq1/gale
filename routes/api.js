@@ -124,27 +124,6 @@ loghandler = {
     yPlay, 
     ySearch 
 } = require("../function/yt");
-
-        router.get('/brainly', async (req, res, next) => {
-            yt = require('brainly-scraper')
-            const q = req.query.q;
-            const apikey = req.query.apikey;
-            if (q === undefined || apikey === undefined) return res.status(404).send({
-                status: 404,
-                message: `Input Parameter q & apikey`
-            });
-            let limit = await isLimit(apikey);
-            if (limit) return res.status(403).send({status: 403, message: 'your limit is 0, reset every morning'});
-            limitAdd(apikey);
-            const check = await cekKey(apikey);
-            if (!check) return res.status(403).send({
-                status: 403,
-                message: `apikey ${apikey} not found, please register first!`
-            });
-          ser = await yt(req.query.q)
-          res.json(ser)
-          })
-          
     
 
 router.get('/ytplay', youtubePlay);
